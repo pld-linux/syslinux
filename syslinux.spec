@@ -8,6 +8,7 @@ Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
+# Source0-md5:	dee67ef64149d1c6cd9ee82d4ba83f71
 Patch0:		%{name}-no_mount.patch
 Patch1:		%{name}-cpp-comment.patch
 URL:		http://syslinux.zytor.com/
