@@ -4,11 +4,12 @@ Summary(pt_BR):	Carregador de boot simples
 Summary(zh_CN):	Linux操作系统的启动管理器
 Name:		syslinux
 Version:	2.04
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-no_mount.patch
+Patch1:		%{name}-cpp-comment.patch
 URL:		http://syslinux.zytor.com/
 BuildRequires:	perl
 BuildRequires:	nasm
@@ -53,7 +54,8 @@ Intel PXE (Pre-Execution Environment).
 
 %prep
 %setup -q
-#%patch -p1
+#%patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} CC=%{__cc}
