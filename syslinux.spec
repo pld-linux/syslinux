@@ -55,8 +55,8 @@ Intel PXE (Pre-Execution Environment).
 %patch -p1
 
 %build
-%{__make}
-%{__make} -C memdisk
+%{__make} CC=%{__cc}
+%{__make} -C memdisk CC=%{__cc}
 
 %install
 rm -rf $RPM_BUILD_ROOT
