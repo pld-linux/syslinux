@@ -55,9 +55,9 @@ servidor de rede usando um boot PROM compatível com a especificação
 Intel PXE (Pre-Execution Environment).
 
 %package libs
-Summary:        syslinux shared libraries
-Summary(pl):    Biblioteki wspó³dzielone syslinux
-Group:          Libraries
+Summary:	syslinux shared libraries
+Summary(pl):	Biblioteki wspó³dzielone syslinux
+Group:		Libraries
 
 %description libs
 syslinux shared libraries.
@@ -67,9 +67,9 @@ Biblioteki wspó³dzielone syslinux.
 
 %package devel
 Summary:	Header files for syslinux libraries
-Summary(pl):    Pliki nag³ówkowe bibliotek syslinux
-Group:          Development/Libraries
-Requires:       %{name}-devel = %{version}-%{release}
+Summary(pl):	Pliki nag³ówkowe bibliotek syslinux
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description devel
 This package includes the header files needed for compilation of
@@ -84,19 +84,22 @@ tylko je¶li chcemy tworzyæ lub kompilowaæ w³asnych klientów
 syslinuksa.
 
 %package static
-Summary:        syslinux static libraries
-Summary(pl):    Biblioteki statyczne syslinux
-Summary(pt_BR): Bibliotecas estáticas para desenvolvimento com syslinux
-Summary(ru):    óÔÁÔÉŞÅÓËÉÅ ÂÉÂÌÉÏÔÅËÉ syslinux
-Summary(uk):    óÔÁÔÉŞÎ¦ Â¦ÂÌ¦ÏÔÅËÉ syslinux
-Group:          Development/Libraries
-Requires:       %{name}-devel = %{version}-%{release}
+Summary:	syslinux static libraries
+Summary(pl):	Biblioteki statyczne syslinux
+Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com syslinux
+Summary(ru):	óÔÁÔÉŞÅÓËÉÅ ÂÉÂÌÉÏÔÅËÉ syslinux
+Summary(uk):	óÔÁÔÉŞÎ¦ Â¦ÂÌ¦ÏÔÅËÉ syslinux
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 syslinux static libraries.
 
 %description static -l pl
 Biblioteki statyczne syslinux.
+
+%description static -l pt_BR
+Bibliotecas estáticas para desenvolvimento com syslinux.
 
 %prep
 %setup -q
