@@ -1,7 +1,7 @@
 Summary:	Simple bootloader
 Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
-Summary(zh_CN):	Linux操作系统的启动管理器.
+Summary(zh_CN):	Linux操作系统的启动管理器
 Name:		syslinux
 Version:	2.00
 Release:	1
