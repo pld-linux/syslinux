@@ -1,0 +1,69 @@
+diff -Nur --exclude *~ syslinux-1.62/syslinux.c syslinux-1.62.new/syslinux.c
+--- syslinux-1.62/syslinux.c	Tue Apr 24 20:36:14 2001
++++ syslinux-1.62.new/syslinux.c	Sat May 12 00:25:58 2001
+@@ -101,7 +101,7 @@
+ 
+ void usage(void)
+ {
+-  fprintf(stderr, "Usage: %s [-sf] device\n", program);
++  fprintf(stderr, "Usage: %s [-sfn] device\n", program);
+   exit(1);
+ }
+ 
+@@ -122,7 +122,8 @@
+   int my_umask;
+   int force = 0;		/* -f (force) option */
+   off_t offset = 0;		/* -o (offset) option */
+-
++  int no_mount = 0;		/* -n (no_mount) option */
++  
+   program = argv[0];
+   
+   device = NULL;
+@@ -138,6 +139,8 @@
+ 	  make_stupid();	/* Use "safe, slow and stupid" code */
+ 	} else if ( *opt == 'f' ) {
+ 	  force = 1;		/* Force install */
++	} else if ( *opt == 'n' ) {
++	  no_mount = 1;		/* Do not mount device/image to put ldlinux.sys */
+ 	} else if ( *opt == 'o' && argp[1] ) {
+ 	  offset = atol(*++argp); /* Byte offset */
+ 	} else {
+@@ -258,6 +268,9 @@
+ 	    device);
+   }
+ 
++
++  if (!no_mount) {
++  
+   /*
+    * Now mount the device.  If we are non-root we need to find an fstab
+    * entry for this device which has the user flag and the appropriate
+@@ -412,6 +427,10 @@
+   if ( err )
+     exit(err);
+ 
++
++  } /* end of if (!no_mount) */
++
++  
+   /*
+    * To finish up, write the boot sector
+    */
+diff -Nur --exclude *~ syslinux-1.62/syslinux.doc syslinux-1.62.new/syslinux.doc
+--- syslinux-1.62/syslinux.doc	Tue Apr 24 20:36:15 2001
++++ syslinux-1.62.new/syslinux.doc	Sat May 12 01:02:13 2001
+@@ -75,6 +75,13 @@
+ The -o option is used with a disk image file and specifies the byte
+ offset of the filesystem image in the file.
+ 
++The -n option can be used to disable mounting floppy device/image.
++In normal mode syslinux tries to mount filesystem for a moment
++to copy ldlinux.sys onto it. Alternatively, user can put ldlinux.sys 
++(e.g with mtools) and then run syslinux with -n option.
++This enables creation of bootdisks by ordinary users in case they are not 
++allowed to mount anything.
++
+ On boot time, by default, the kernel will be loaded from the image named
+ LINUX on the boot floppy.  This default can be changed, see the section
+ on the SYSLINUX config file.
