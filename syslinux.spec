@@ -4,7 +4,7 @@ Summary(pt_BR):	Carregador de boot simples
 Summary(zh_CN):	Linux操作系统的启动管理器
 Name:		syslinux
 Version:	2.11
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
@@ -14,7 +14,7 @@ URL:		http://syslinux.zytor.com/
 BuildRequires:	perl
 BuildRequires:	nasm
 Requires:	mtools
-ExclusiveArch:	%{ix86} amd64
+ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
