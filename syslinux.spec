@@ -2,14 +2,14 @@ Summary:	Simple bootloader
 Summary(pl):	Prosty bootloader
 Name:		syslinux
 Version:	1.63
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-no_mount.patch
-URL:		http://www.kernel.org/software/syslinux/
+URL:		http://syslinux.zytor.com/
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,7 +47,7 @@ sieciowego poprzez Boot-PROM kompatybilny ze specyfikacj± Intel PXE
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name}}
 
-install *.sys *.bin *.com $RPM_BUILD_ROOT%{_libdir}/%{name}
+install *.sys *.bin *.com pxelinux.0 $RPM_BUILD_ROOT%{_libdir}/%{name}
 install syslinux $RPM_BUILD_ROOT%{_bindir}
 
 # I'm not sure if this should be packed /klakier
