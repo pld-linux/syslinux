@@ -11,7 +11,7 @@ Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.t
 # Source0-md5:	38a30cc790265f19f80330330ffaa527
 Patch0:		%{name}-nowin32.patch
 URL:		http://syslinux.zytor.com/
-BuildRequires:	perl
+BuildRequires:	perl-base
 BuildRequires:	nasm
 Requires:	mtools
 ExclusiveArch:	%{ix86}
