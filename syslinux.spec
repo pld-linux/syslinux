@@ -14,6 +14,7 @@ Patch1:		%{name}-cpp-comment.patch
 URL:		http://syslinux.zytor.com/
 BuildRequires:	perl
 BuildRequires:	nasm
+Requires:	mtools
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
