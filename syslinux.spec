@@ -2,7 +2,7 @@ Summary:	Simple bootloader
 Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Name:		syslinux
-Version:	1.71
+Version:	1.72
 Release:	1
 License:	GPL
 Group:		Applications/System
