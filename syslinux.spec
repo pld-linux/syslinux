@@ -3,12 +3,12 @@ Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Summary(zh_CN):	Linux≤Ÿ◊˜œµÕ≥µƒ∆Ù∂Øπ‹¿Ì∆˜
 Name:		syslinux
-Version:	3.00
-Release:	0.1
+Version:	3.05
+Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	160b490992bbdac6701734b9ffa581c0
+# Source0-md5:	78cb7cdbc5307c8acde324288bd3a5dc
 URL:		http://syslinux.zytor.com/
 BuildRequires:	perl-base
 BuildRequires:	nasm
@@ -52,17 +52,6 @@ TambÈm inclui o PXELINUX, um programa para boot remoto a partir de um
 servidor de rede usando um boot PROM compatÌvel com a especificaÁ„o
 Intel PXE (Pre-Execution Environment).
 
-#%package libs
-#Summary:	syslinux shared libraries
-#Summary(pl):	Biblioteki wspÛ≥dzielone syslinux
-#Group:		Libraries
-
-#%description libs
-#syslinux shared libraries.
-
-#%description libs -l pl
-#Biblioteki wspÛ≥dzielone syslinux.
-
 %package devel
 Summary:	Header files for syslinux libraries
 Summary(pl):	Pliki nag≥Ûwkowe bibliotek syslinux
@@ -81,24 +70,6 @@ aplikacji wykorzystuj±cych kod syslinuksa. Naleøy go instalowaÊ
 tylko je∂li chcemy tworzyÊ lub kompilowaÊ w≥asnych klientÛw
 syslinuksa.
 
-%package static
-Summary:	syslinux static libraries
-Summary(pl):	Biblioteki statyczne syslinux
-Summary(pt_BR):	Bibliotecas est·ticas para desenvolvimento com syslinux
-Summary(ru):	Û‘¡‘…ﬁ≈”À…≈ ¬…¬Ã…œ‘≈À… syslinux
-Summary(uk):	Û‘¡‘…ﬁŒ¶ ¬¶¬Ã¶œ‘≈À… syslinux
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-syslinux static libraries.
-
-%description static -l pl
-Biblioteki statyczne syslinux.
-
-%description static -l pt_BR
-Bibliotecas est·ticas para desenvolvimento com syslinux.
-
 %prep
 %setup -q
 
@@ -112,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
 install ldlinux.sys $RPM_BUILD_ROOT/%{_libdir}/%{name}
 
-%{__make} install install-lib \
+%{__make} install-all \
 	INSTALLROOT=$RPM_BUILD_ROOT \
 	LIBDIR=%{_libdir}
 
@@ -121,26 +92,13 @@ install extlinux/extlinux $RPM_BUILD_ROOT/%{_bindir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-#%post	libs -p /sbin/ldconfig
-#%postun	libs -p /sbin/ldconfig
-
 %files
 %defattr(644,root,root,755)
-%doc README *.doc */*.doc
+%doc NEWS README *.doc */*.doc
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/???[a-z]*
 
-#%files libs
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/*.so.*
-
 %files devel
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/*.so
-#%{_includedir}/*.h
 %{_libdir}/%{name}/com32
-
-%files static
-%defattr(644,root,root,755)
-#%{_libdir}/*.a
