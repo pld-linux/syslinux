@@ -8,10 +8,9 @@ Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-#Patch0:		%{name}-no_mount.patch
 URL:		http://www.kernel.org/software/syslinux/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86}
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
 SYSLINUX is a boot loader for the Linux operating system which
@@ -31,7 +30,6 @@ added temporary patch no_mount.patch to avoid tricky image mounting
 
 %prep
 %setup -q
-#%patch
 
 %build
 %{__make}
