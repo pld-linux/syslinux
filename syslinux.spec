@@ -6,7 +6,12 @@ Release:	1
 License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
+Group(es):	Aplicaciones/Sistema
+Group(fr):	Aplicaciones/Système
 Group(pl):	Aplikacje/System
+Group(pt):	Aplicações/Sistema
+Group(pt_BR):	Aplicações/Sistema
+Group(ru):	ðÒÉÌÏÖÅÎÉÑ/óÉÓÔÅÍÁ
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-no_mount.patch
 URL:		http://syslinux.zytor.com/
@@ -25,16 +30,16 @@ to boot off a network server using a boot PROM compatible with the
 Intel PXE (Pre-Execution Environment) specification.
 
 %description -l pl
-SYSLINUX jest boot-loaderem dla Linux'a, który operuje na dyskietkach 
-z systemem plików MS-DOS. Jego przeznaczeniem jest uproszczenie pierwszej
-instalacji Linux'a, dyskietki ratunkowe oraz inne rzeczy zwi±zane z
-dyskietkami. Dyskietka SYSLINX'owa mo¿e byæ modyfikowana w systemie
-MS-DOS (a tak¿e ka¿dym innym systemie z dostêpem do systemu plików MS-DOS)
-gdy narzêdzia sa ju¿ stworzone, a tak¿e potrzebuje tylko ~7K programu 
-DOS'owego lub ~13K programu Linux'owego do stworzenia ich po raz pierwszy.
-Zawiera tak¿e program PXELINUX - program s³u¿±cy do bootowania servera
-sieciowego poprzez Boot-PROM kompatybilny ze specyfikacj± Intel PXE 
-(Pre-Execution Environment).
+SYSLINUX jest boot-loaderem dla Linux'a, który operuje na dyskietkach
+z systemem plików MS-DOS. Jego przeznaczeniem jest uproszczenie
+pierwszej instalacji Linux'a, dyskietki ratunkowe oraz inne rzeczy
+zwi±zane z dyskietkami. Dyskietka SYSLINX'owa mo¿e byæ modyfikowana w
+systemie MS-DOS (a tak¿e ka¿dym innym systemie z dostêpem do systemu
+plików MS-DOS) gdy narzêdzia sa ju¿ stworzone, a tak¿e potrzebuje
+tylko ~7K programu DOS'owego lub ~13K programu Linux'owego do
+stworzenia ich po raz pierwszy. Zawiera tak¿e program PXELINUX -
+program s³u¿±cy do bootowania servera sieciowego poprzez Boot-PROM
+kompatybilny ze specyfikacj± Intel PXE (Pre-Execution Environment).
 
 %prep
 %setup -q
