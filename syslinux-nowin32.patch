@@ -1,0 +1,10 @@
+--- syslinux-2.05/Makefile~	2003-07-15 07:49:04.000000000 +0000
++++ syslinux-2.05/Makefile	2003-07-17 21:33:18.000000000 +0000
+@@ -168,7 +168,6 @@
+ 		-c -o $@ $<
+ 
+ syslinux.exe: win32/syslinux-mingw.c libsyslinux.a
+-	$(MAKE) -C win32 all
+ 
+ gethostip.o: gethostip.c
+ 
