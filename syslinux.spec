@@ -14,7 +14,7 @@ URL:		http://syslinux.zytor.com/
 BuildRequires:	perl-base
 BuildRequires:	nasm
 Requires:	mtools
-ExclusiveArch:  %{ix86} amd64
+ExclusiveArch:	%{ix86} amd64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
