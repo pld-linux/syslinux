@@ -1,8 +1,8 @@
 Summary:	Simple bootloader
 Summary(pl):	Prosty bootloader
 Name:		syslinux
-Version:	1.63
-Release:	2
+Version:	1.67
+Release:	1
 License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
