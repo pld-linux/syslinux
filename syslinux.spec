@@ -11,7 +11,7 @@ URL:		http://syslinux.zytor.com/
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%description 
+%description
 SYSLINUX is a boot loader for the Linux operating system which
 operates off MS-DOS floppies. It is intended to simplify first-time
 installation of Linux, rescue disks, and other uses for boot floppies.
