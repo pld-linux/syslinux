@@ -3,13 +3,12 @@ Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Summary(zh_CN):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	2.13
-Release:	1
+Version:	3.00
+Release:	0.1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	d04fad58d78acfe4d0143d16067053f7
-Patch0:		%{name}-nowin32.patch
+# Source0-md5:	160b490992bbdac6701734b9ffa581c0
 URL:		http://syslinux.zytor.com/
 BuildRequires:	perl-base
 BuildRequires:	nasm
@@ -53,16 +52,16 @@ Tamb閙 inclui o PXELINUX, um programa para boot remoto a partir de um
 servidor de rede usando um boot PROM compat韛el com a especifica玢o
 Intel PXE (Pre-Execution Environment).
 
-%package libs
-Summary:	syslinux shared libraries
-Summary(pl):	Biblioteki wsp蟪dzielone syslinux
-Group:		Libraries
+#%package libs
+#Summary:	syslinux shared libraries
+#Summary(pl):	Biblioteki wsp蟪dzielone syslinux
+#Group:		Libraries
 
-%description libs
-syslinux shared libraries.
+#%description libs
+#syslinux shared libraries.
 
-%description libs -l pl
-Biblioteki wsp蟪dzielone syslinux.
+#%description libs -l pl
+#Biblioteki wsp蟪dzielone syslinux.
 
 %package devel
 Summary:	Header files for syslinux libraries
@@ -102,7 +101,6 @@ Bibliotecas est醫icas para desenvolvimento com syslinux.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -f ldlinux.{bin,bss,lst,sys}
@@ -118,13 +116,13 @@ install ldlinux.sys $RPM_BUILD_ROOT/%{_libdir}/%{name}
 	INSTALLROOT=$RPM_BUILD_ROOT \
 	LIBDIR=%{_libdir}
 
-install syslinux-nomtools $RPM_BUILD_ROOT/%{_bindir}
+install extlinux/extlinux $RPM_BUILD_ROOT/%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	libs -p /sbin/ldconfig
-%postun	libs -p /sbin/ldconfig
+#%post	libs -p /sbin/ldconfig
+#%postun	libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -133,16 +131,16 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/???[a-z]*
 
-%files libs
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/*.so.*
+#%files libs
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/*.so.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/*.so
-%{_includedir}/*.h
+#%attr(755,root,root) %{_libdir}/*.so
+#%{_includedir}/*.h
 %{_libdir}/%{name}/com32
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+#%{_libdir}/*.a
