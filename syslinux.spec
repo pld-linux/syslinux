@@ -24,10 +24,27 @@ to create it in the first place. It also includes PXELINUX, a program
 to boot off a network server using a boot PROM compatible with the
 Intel PXE (Pre-Execution Environment) specification.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Warning: this
-version does work in different way than the docs states because I
+Warning: 
+this version does work in different way than the docs states because I
 added temporary patch no_mount.patch to avoid tricky image mounting
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+%description -l pl
+SYSLINUX jest boot-loaderem dla Linux'a, który operuje na dyskietkach 
+z systemem plików MS-DOS. Jego przeznaczeniem jest uproszczenie pierwszej
+instalacji Linux'a, dyskietki ratunkowe oraz inne rzeczy zwi±zane z
+dyskietkami. Dyskietka SYSLINX'owa mo¿e byæ modyfikowana w systemie
+MS-DOS (a tak¿e ka¿dym innym systemie z dostêpem do systemu plików MS-DOS)
+gdy narzêdzia sa ju¿ stworzone, a tak¿e potrzebuje tylko ~7K programu 
+DOS'owego lub ~13K programu Linux'owego do stworzenia ich po raz pierwszy.
+Zawiera tak¿e program PXELINUX - program s³u¿±cy do bootowania servera
+sieciowego poprzez Boot-PROM kompatybilny ze specyfikacj± Intel PXE 
+(Pre-Execution Environment).
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+UWAGA:
+Ta wersja dzia³a inaczej ni¿ jest to opisane w dokumentacji, poniewa¿
+doda³em tymczasowy patch no_mount.patch aby zapobiedz tricky image mounting.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 %prep
 %setup -q
