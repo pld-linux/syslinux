@@ -14,7 +14,7 @@ URL:		http://syslinux.zytor.com/
 BuildRequires:	perl-base
 BuildRequires:	nasm
 Requires:	mtools
-ExclusiveArch:	%{ix86}
+ExclusiveArch:  %{ix86} amd64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -115,7 +115,8 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
 install ldlinux.sys $RPM_BUILD_ROOT/%{_libdir}/%{name}
 
 %{__make} install install-lib \
-	INSTALLROOT=$RPM_BUILD_ROOT
+	INSTALLROOT=$RPM_BUILD_ROOT \
+	LIBDIR=%{_libdir}
 
 install syslinux-nomtools $RPM_BUILD_ROOT/%{_bindir}
 
