@@ -1,7 +1,7 @@
-diff -Naur syslinux-1.71/syslinux.c syslinux-1.71-p/syslinux.c
---- syslinux-1.71/syslinux.c	Thu Apr 18 07:05:12 2002
-+++ syslinux-1.71-p/syslinux.c	Thu Apr 18 12:50:48 2002
-@@ -102,7 +102,7 @@
+diff -Naur syslinux-2.00.org/syslinux.c syslinux-2.00/syslinux.c
+--- syslinux-2.00.org/syslinux.c	Fri Oct 25 21:16:01 2002
++++ syslinux-2.00/syslinux.c	Sun Oct 27 17:18:33 2002
+@@ -125,7 +125,7 @@
  
  void usage(void)
  {
@@ -10,17 +10,15 @@ diff -Naur syslinux-1.71/syslinux.c syslinux-1.71-p/syslinux.c
    exit(1);
  }
  
-@@ -180,7 +180,8 @@
+@@ -203,6 +203,7 @@
    int my_umask;
    int force = 0;		/* -f (force) option */
    off_t offset = 0;		/* -o (offset) option */
--
 +  int no_mount = 0;		/* -n (no_mount) option */
-+  
-   program = argv[0];
-   
-   device = NULL;
-@@ -196,6 +197,8 @@
+ 
+   ruid = getuid();
+   euid = geteuid();
+@@ -226,6 +227,8 @@
  	  make_stupid();	/* Use "safe, slow and stupid" code */
  	} else if ( *opt == 'f' ) {
  	  force = 1;		/* Force install */
@@ -29,7 +27,7 @@ diff -Naur syslinux-1.71/syslinux.c syslinux-1.71-p/syslinux.c
  	} else if ( *opt == 'o' && argp[1] ) {
  	  offset = strtoul(*++argp, NULL, 0); /* Byte offset */
  	} else {
-@@ -301,6 +304,9 @@
+@@ -329,6 +332,9 @@
  	    device);
    }
  
@@ -39,7 +37,7 @@ diff -Naur syslinux-1.71/syslinux.c syslinux-1.71-p/syslinux.c
    /*
     * Now mount the device.  If we are non-root we need to find an fstab
     * entry for this device which has the user flag and the appropriate
-@@ -455,6 +461,10 @@
+@@ -527,6 +533,10 @@
    if ( err )
      exit(err);
  
