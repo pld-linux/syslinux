@@ -2,8 +2,8 @@ Summary:	Simple bootloader
 Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Name:		syslinux
-Version:	1.72
-Release:	2
+Version:	1.75
+Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
@@ -69,13 +69,11 @@ install syslinux $RPM_BUILD_ROOT%{_bindir}
 # I'm not sure if this should be packed /klakier
 #install gethostip $RPM_BUILD_ROOT%{_bindir}
 
-gzip -9nf README *.doc */*.doc
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz */*.gz
+%doc README *.doc */*.doc
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/*
