@@ -3,13 +3,13 @@ Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Summary(zh_CN):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	2.04
-Release:	2
+Version:	2.05
+Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	dee67ef64149d1c6cd9ee82d4ba83f71
-Patch0:		%{name}-no_mount.patch
+# Source0-md5:	dc68729fa6a39e6f630cf8643b19eab4
+Patch0:		%{name}-nowin32.patch
 Patch1:		%{name}-cpp-comment.patch
 URL:		http://syslinux.zytor.com/
 BuildRequires:	perl
@@ -55,7 +55,7 @@ Intel PXE (Pre-Execution Environment).
 
 %prep
 %setup -q
-#%patch0 -p1
+%patch0 -p1
 %patch1 -p1
 
 %build
