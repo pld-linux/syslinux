@@ -1,14 +1,14 @@
 Summary:	Simple bootloader
 Summary(pl):	Prosty bootloader
 Name:		syslinux
-Version:	1.54
+Version:	1.60
 Release:	1
 License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-no_mount.patch
+#Patch0:		%{name}-no_mount.patch
 URL:		http://www.kernel.org/software/syslinux/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86}
@@ -31,7 +31,7 @@ added temporary patch no_mount.patch to avoid tricky image mounting
 
 %prep
 %setup -q
-%patch
+#%patch
 
 %build
 %{__make}
