@@ -1,5 +1,6 @@
 Summary:	Simple bootloader
 Summary(pl):	Prosty bootloader
+Summary(pt_BR):	Carregador de boot simples
 Name:		syslinux
 Version:	1.71
 Release:	1
@@ -33,6 +34,19 @@ tylko ~7K programu DOS'owego lub ~13K programu Linux'owego do
 stworzenia ich po raz pierwszy. Zawiera tak¿e program PXELINUX -
 program s³u¿±cy do bootowania servera sieciowego poprzez Boot-PROM
 kompatybilny ze specyfikacj± Intel PXE (Pre-Execution Environment).
+
+%description -l pt_BR
+SYSLINUX é um carregador de boot para o linux, operando em disquetes
+com formatação DOS. Sua intenção é simplificar instalações do Linux,
+discos de recuperação, e outros usos para disquetes de boot. Um
+disquete SYSLINUX pode ser manipulado usando ferramentas padrão do DOS
+(ou qualquer sistema que possa acessar um filesystem DOS) e requer
+somente um programa DOS de aproximadamente 7K ou linux de 13K para
+criá-lo na primeira vez.
+
+Também inclui o PXELINUX, um programa para boot remoto a partir de um
+servidor de rede usando um boot PROM compatível com a especificação
+Intel PXE (Pre-Execution Environment).
 
 %prep
 %setup -q
