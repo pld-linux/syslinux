@@ -66,36 +66,34 @@ syslinux shared libraries.
 Biblioteki wspÛ≥dzielone syslinux.
 
 %package devel
-Summary:        syslinux static libraries
-Summary(pl):    Biblioteki statyczne syslinux
-Summary(pt_BR): Bibliotecas est·ticas para desenvolvimento com openldap
-Summary(ru):    Û‘¡‘…ﬁ≈”À…≈ ¬…¬Ã…œ‘≈À… syslinux
-Summary(uk):    Û‘¡‘…ﬁŒ¶ ¬¶¬Ã¶œ‘≈À… syslinux
+Summary:	Header files for syslinux libraries
+Summary(pl):    Pliki nag≥Ûwkowe bibliotek syslinux
 Group:          Development/Libraries
 Requires:       %{name}-devel = %{version}-%{release}
 
 %description devel
-This package includes the development libraries and header files
-needed for compilation of applications that are making use of the syslinux
-internals. Install this package only if you plan to develop or will
-need to compile cutomized syslinux clients.
+This package includes the header files needed for compilation of
+applications that are making use of the syslinux internals. Install
+this package only if you plan to develop or will need to compile
+customized syslinux clients.
 
 %description devel -l pl
-Biblioteki statyczne syslinux.
+Ten pakiet zawiera pliki nag≥Ûwkowe potrzebne do kompilowania
+aplikacji wykorzystuj±cych kod syslinuksa. Naleøy go instalowaÊ
+tylko je∂li chcemy tworzyÊ lub kompilowaÊ w≥asnych klientÛw
+syslinuksa.
 
 %package static
 Summary:        syslinux static libraries
 Summary(pl):    Biblioteki statyczne syslinux
-Summary(pt_BR): Bibliotecas est·ticas para desenvolvimento com openldap
+Summary(pt_BR): Bibliotecas est·ticas para desenvolvimento com syslinux
 Summary(ru):    Û‘¡‘…ﬁ≈”À…≈ ¬…¬Ã…œ‘≈À… syslinux
 Summary(uk):    Û‘¡‘…ﬁŒ¶ ¬¶¬Ã¶œ‘≈À… syslinux
 Group:          Development/Libraries
 Requires:       %{name}-devel = %{version}-%{release}
 
 %description static
-This package includes the development libraries and header files
-needed for compilation of applications that are making use of the syslinux
-internals.
+syslinux static libraries.
 
 %description static -l pl
 Biblioteki statyczne syslinux.
@@ -106,7 +104,8 @@ Biblioteki statyczne syslinux.
 %patch1 -p1
 
 %build
-%{__make} installer CC=%{__cc}
+%{__make} installer \
+	CC="%{__cc}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -118,8 +117,8 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -129,11 +128,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%{_libdir}/*.so.*
+%attr(755,root,root) %{_libdir}/*.so.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/*.so
+%attr(755,root,root) %{_libdir}/*.so
 %{_includedir}/*.h
 
 %files static
