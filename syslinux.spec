@@ -34,10 +34,10 @@ z systemem plików MS-DOS. Jego przeznaczeniem jest uproszczenie
 pierwszej instalacji Linux'a, dyskietki ratunkowe oraz inne rzeczy
 zwi±zane z dyskietkami. Dyskietka SYSLINX'owa mo¿e byæ modyfikowana w
 systemie MS-DOS (a tak¿e ka¿dym innym systemie z dostêpem do systemu
-plików MS-DOS) gdy narzêdzia sa ju¿ stworzone, a tak¿e potrzebuje
+plików MS-DOS) gdy narzêdzia s± ju¿ stworzone, a tak¿e potrzebuje
 tylko ~7K programu DOS'owego lub ~13K programu Linux'owego do
 stworzenia ich po raz pierwszy. Zawiera tak¿e program PXELINUX -
-program s³u¿±cy do bootowania servera sieciowego poprzez Boot-PROM
+program s³u¿±cy do bootowania serwera sieciowego poprzez Boot-PROM
 kompatybilny ze specyfikacj± Intel PXE (Pre-Execution Environment).
 
 %description -l pt_BR
