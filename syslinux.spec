@@ -3,12 +3,12 @@ Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Summary(zh_CN):	Linux≤Ÿ◊˜œµÕ≥µƒ∆Ù∂Øπ‹¿Ì∆˜
 Name:		syslinux
-Version:	2.08
+Version:	2.09
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	f1c699a3996a000f0cd0bdd075cbcf6c
+# Source0-md5:	703f11a01acf67a9f83ec082ca395565
 Patch0:		%{name}-nowin32.patch
 Patch1:		%{name}-cpp-comment.patch
 URL:		http://syslinux.zytor.com/
@@ -54,6 +54,52 @@ TambÈm inclui o PXELINUX, um programa para boot remoto a partir de um
 servidor de rede usando um boot PROM compatÌvel com a especificaÁ„o
 Intel PXE (Pre-Execution Environment).
 
+%package libs
+Summary:        syslinux shared libraries
+Summary(pl):    Biblioteki wspÛ≥dzielone syslinux
+Group:          Libraries
+
+%description libs
+syslinux shared libraries.
+
+%description libs -l pl
+Biblioteki wspÛ≥dzielone syslinux.
+
+%package devel
+Summary:        syslinux static libraries
+Summary(pl):    Biblioteki statyczne syslinux
+Summary(pt_BR): Bibliotecas est·ticas para desenvolvimento com openldap
+Summary(ru):    Û‘¡‘…ﬁ≈”À…≈ ¬…¬Ã…œ‘≈À… syslinux
+Summary(uk):    Û‘¡‘…ﬁŒ¶ ¬¶¬Ã¶œ‘≈À… syslinux
+Group:          Development/Libraries
+Requires:       %{name}-devel = %{version}-%{release}
+
+%description devel
+This package includes the development libraries and header files
+needed for compilation of applications that are making use of the syslinux
+internals. Install this package only if you plan to develop or will
+need to compile cutomized syslinux clients.
+
+%description devel -l pl
+Biblioteki statyczne syslinux.
+
+%package static
+Summary:        syslinux static libraries
+Summary(pl):    Biblioteki statyczne syslinux
+Summary(pt_BR): Bibliotecas est·ticas para desenvolvimento com openldap
+Summary(ru):    Û‘¡‘…ﬁ≈”À…≈ ¬…¬Ã…œ‘≈À… syslinux
+Summary(uk):    Û‘¡‘…ﬁŒ¶ ¬¶¬Ã¶œ‘≈À… syslinux
+Group:          Development/Libraries
+Requires:       %{name}-devel = %{version}-%{release}
+
+%description static
+This package includes the development libraries and header files
+needed for compilation of applications that are making use of the syslinux
+internals.
+
+%description static -l pl
+Biblioteki statyczne syslinux.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -72,8 +118,24 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
 %doc README *.doc */*.doc
 %attr(755,root,root) %{_bindir}/*
-%{_libdir}/*
+%{_libdir}/%{name}
+
+%files libs
+%defattr(644,root,root,755)
+%{_libdir}/*.so.*
+
+%files devel
+%defattr(644,root,root,755)
+%{_libdir}/*.so
+%{_includedir}/*.h
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/*.a
