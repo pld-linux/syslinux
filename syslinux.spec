@@ -3,12 +3,12 @@ Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Summary(zh_CN):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	2.06
+Version:	2.07
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	c3be5acc14742ad7b23cb6cdf63725c6
+# Source0-md5:	60e92849dc39be1b0d8246cab1b34e95
 Patch0:		%{name}-nowin32.patch
 Patch1:		%{name}-cpp-comment.patch
 URL:		http://syslinux.zytor.com/
@@ -60,19 +60,14 @@ Intel PXE (Pre-Execution Environment).
 %patch1 -p1
 
 %build
-%{__make} CC=%{__cc}
-%{__make} -C memdisk CC=%{__cc}
+%{__make} installer CC=%{__cc}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
 
-install *.sys *.bin *.com pxelinux.0 $RPM_BUILD_ROOT%{_libdir}/%{name}
-install memdisk/memdisk $RPM_BUILD_ROOT%{_libdir}/%{name}
-install syslinux $RPM_BUILD_ROOT%{_bindir}
-
-# I'm not sure if this should be packed /klakier
-#install gethostip $RPM_BUILD_ROOT%{_bindir}
+%{__make} install install-lib \
+	INSTALLROOT=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
