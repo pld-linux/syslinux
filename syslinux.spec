@@ -105,12 +105,14 @@ Bibliotecas estáticas para desenvolvimento com syslinux.
 %patch0 -p1
 
 %build
+rm -f ldlinux.{bin,bss,lst,sys}
 %{__make} installer \
 	CC="%{__cc}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
+install ldlinux.sys $RPM_BUILD_ROOT/%{_libdir}/%{name}
 
 %{__make} install install-lib \
 	INSTALLROOT=$RPM_BUILD_ROOT
