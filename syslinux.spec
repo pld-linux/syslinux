@@ -3,12 +3,14 @@ Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Name:		syslinux
 Version:	1.72
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-no_mount.patch
 URL:		http://syslinux.zytor.com/
+BuildRequires:	perl
+BuildRequires:	nasm
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -54,24 +56,26 @@ Intel PXE (Pre-Execution Environment).
 
 %build
 %{__make}
+%{__make} -C memdisk
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name}}
 
 install *.sys *.bin *.com pxelinux.0 $RPM_BUILD_ROOT%{_libdir}/%{name}
+install memdisk/memdisk $RPM_BUILD_ROOT%{_libdir}/%{name}
 install syslinux $RPM_BUILD_ROOT%{_bindir}
 
 # I'm not sure if this should be packed /klakier
 #install gethostip $RPM_BUILD_ROOT%{_bindir}
 
-gzip -9nf README *.doc
+gzip -9nf README *.doc */*.doc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc *.gz */*.gz
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/*
