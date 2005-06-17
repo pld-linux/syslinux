@@ -72,6 +72,7 @@ syslinuksa.
 
 %prep
 %setup -q
+sed -i 's/-march=i386//' sample/Makefile
 
 %build
 rm -f ldlinux.{bin,bss,lst,sys}
