@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc NEWS README *.doc */*.doc
+%doc NEWS README* *.doc */*.doc
 %attr(755,root,root) /sbin/*
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
