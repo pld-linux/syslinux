@@ -3,12 +3,12 @@ Summary(pl):	Prosty bootloader
 Summary(pt_BR):	Carregador de boot simples
 Summary(zh_CN):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	3.10
+Version:	3.11
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	777d868eef7619ce971bfbc0c3ad4245
+# Source0-md5:	513ff71287a4397d507879a1a836c2e8
 URL:		http://syslinux.zytor.com/
 BuildRequires:	perl-base
 BuildRequires:	nasm
