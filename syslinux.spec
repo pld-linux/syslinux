@@ -12,9 +12,12 @@ Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.t
 URL:		http://syslinux.zytor.com/
 BuildRequires:	perl-base
 BuildRequires:	nasm
+BuildRequires:	sed >= 4.0
 Requires:	mtools
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_sbindir	/sbin
 
 %description
 SYSLINUX is a boot loader for the Linux operating system which
@@ -96,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc NEWS README* *.doc */*.doc
-%attr(755,root,root) /sbin/*
+%attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/???[.a-z]*
