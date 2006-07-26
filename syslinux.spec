@@ -10,8 +10,8 @@ Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
 # Source0-md5:	513ff71287a4397d507879a1a836c2e8
 URL:		http://syslinux.zytor.com/
-BuildRequires:	perl-base
 BuildRequires:	nasm
+BuildRequires:	perl-base
 BuildRequires:	sed >= 4.0
 Requires:	mtools
 ExclusiveArch:	%{ix86} %{x8664}
@@ -69,9 +69,8 @@ customized syslinux clients.
 
 %description devel -l pl
 Ten pakiet zawiera pliki nag³ówkowe potrzebne do kompilowania
-aplikacji wykorzystuj±cych kod syslinuksa. Nale¿y go instalowaæ
-tylko je¶li chcemy tworzyæ lub kompilowaæ w³asnych klientów
-syslinuksa.
+aplikacji wykorzystuj±cych kod syslinuksa. Nale¿y go instalowaæ tylko
+je¶li chcemy tworzyæ lub kompilowaæ w³asnych klientów syslinuksa.
 
 %prep
 %setup -q
@@ -85,13 +84,13 @@ rm -f ldlinux.{bin,bss,lst,sys}
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
-install ldlinux.sys $RPM_BUILD_ROOT/%{_libdir}/%{name}
+install ldlinux.sys $RPM_BUILD_ROOT%{_libdir}/%{name}
 
 %{__make} install-all \
 	INSTALLROOT=$RPM_BUILD_ROOT \
 	LIBDIR=%{_libdir}
 
-install extlinux/extlinux $RPM_BUILD_ROOT/%{_bindir}
+install extlinux/extlinux $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
