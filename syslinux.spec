@@ -75,6 +75,7 @@ je¶li chcemy tworzyæ lub kompilowaæ w³asnych klientów syslinuksa.
 %prep
 %setup -q
 sed -i 's/-march=i386//' sample/Makefile
+sed -i 's/FPNG_NO_WRITE_SUPPORTED/DPNG_NO_WRITE_SUPPORTED/' com32/lib/MCONFIG
 
 %build
 rm -f ldlinux.{bin,bss,lst,sys}
