@@ -1,7 +1,7 @@
 Summary:	Simple bootloader
-Summary(pl):	Prosty bootloader
-Summary(pt_BR):	Carregador de boot simples
-Summary(zh_CN):	Linux²Ù×÷ÏµÍ³µÄÆô¶¯¹ÜÀíÆ÷
+Summary(pl.UTF-8):   Prosty bootloader
+Summary(pt_BR.UTF-8):   Carregador de boot simples
+Summary(zh_CN.UTF-8):   Linuxæ“ä½œç³»ç»Ÿçš„å¯åŠ¨ç®¡ç†å™¨
 Name:		syslinux
 Version:	3.35
 Release:	1
@@ -30,34 +30,34 @@ to create it in the first place. It also includes PXELINUX, a program
 to boot off a network server using a boot PROM compatible with the
 Intel PXE (Pre-Execution Environment) specification.
 
-%description -l pl
-SYSLINUX jest boot-loaderem dla Linuksa, który operuje na dyskietkach
-z systemem plików MS-DOS. Jego przeznaczeniem jest uproszczenie
+%description -l pl.UTF-8
+SYSLINUX jest boot-loaderem dla Linuksa, ktÃ³ry operuje na dyskietkach
+z systemem plikÃ³w MS-DOS. Jego przeznaczeniem jest uproszczenie
 pierwszej instalacji Linuksa, dyskietki ratunkowe oraz inne rzeczy
-zwi±zane z dyskietkami. Dyskietka syslinuksowa mo¿e byæ modyfikowana w
-systemie MS-DOS (a tak¿e ka¿dym innym systemie z dostêpem do systemu
-plików MS-DOS) gdy narzêdzia s± ju¿ stworzone, a tak¿e potrzebuje
+zwiÄ…zane z dyskietkami. Dyskietka syslinuksowa moÅ¼e byÄ‡ modyfikowana w
+systemie MS-DOS (a takÅ¼e kaÅ¼dym innym systemie z dostÄ™pem do systemu
+plikÃ³w MS-DOS) gdy narzÄ™dzia sÄ… juÅ¼ stworzone, a takÅ¼e potrzebuje
 tylko ~7K programu DOS-owego lub ~13K programu linuksowego do
-stworzenia ich po raz pierwszy. Zawiera tak¿e program PXELINUX -
-program s³u¿±cy do bootowania serwera sieciowego poprzez Boot-PROM
-kompatybilny ze specyfikacj± Intel PXE (Pre-Execution Environment).
+stworzenia ich po raz pierwszy. Zawiera takÅ¼e program PXELINUX -
+program sÅ‚uÅ¼Ä…cy do bootowania serwera sieciowego poprzez Boot-PROM
+kompatybilny ze specyfikacjÄ… Intel PXE (Pre-Execution Environment).
 
-%description -l pt_BR
-SYSLINUX é um carregador de boot para o linux, operando em disquetes
-com formatação DOS. Sua intenção é simplificar instalações do Linux,
-discos de recuperação, e outros usos para disquetes de boot. Um
-disquete SYSLINUX pode ser manipulado usando ferramentas padrão do DOS
+%description -l pt_BR.UTF-8
+SYSLINUX Ã© um carregador de boot para o linux, operando em disquetes
+com formataÃ§Ã£o DOS. Sua intenÃ§Ã£o Ã© simplificar instalaÃ§Ãµes do Linux,
+discos de recuperaÃ§Ã£o, e outros usos para disquetes de boot. Um
+disquete SYSLINUX pode ser manipulado usando ferramentas padrÃ£o do DOS
 (ou qualquer sistema que possa acessar um filesystem DOS) e requer
 somente um programa DOS de aproximadamente 7K ou linux de 13K para
-criá-lo na primeira vez.
+criÃ¡-lo na primeira vez.
 
-Também inclui o PXELINUX, um programa para boot remoto a partir de um
-servidor de rede usando um boot PROM compatível com a especificação
+TambÃ©m inclui o PXELINUX, um programa para boot remoto a partir de um
+servidor de rede usando um boot PROM compatÃ­vel com a especificaÃ§Ã£o
 Intel PXE (Pre-Execution Environment).
 
 %package devel
 Summary:	Header files for syslinux libraries
-Summary(pl):	Pliki nag³ówkowe bibliotek syslinux
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe bibliotek syslinux
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -67,10 +67,10 @@ applications that are making use of the syslinux internals. Install
 this package only if you plan to develop or will need to compile
 customized syslinux clients.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe potrzebne do kompilowania
-aplikacji wykorzystuj±cych kod syslinuksa. Nale¿y go instalowaæ tylko
-je¶li chcemy tworzyæ lub kompilowaæ w³asnych klientów syslinuksa.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe potrzebne do kompilowania
+aplikacji wykorzystujÄ…cych kod syslinuksa. NaleÅ¼y go instalowaÄ‡ tylko
+jeÅ›li chcemy tworzyÄ‡ lub kompilowaÄ‡ wÅ‚asnych klientÃ³w syslinuksa.
 
 %prep
 %setup -q
