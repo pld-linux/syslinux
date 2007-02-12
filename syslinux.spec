@@ -1,7 +1,7 @@
 Summary:	Simple bootloader
-Summary(pl.UTF-8):   Prosty bootloader
-Summary(pt_BR.UTF-8):   Carregador de boot simples
-Summary(zh_CN.UTF-8):   Linux操作系统的启动管理器
+Summary(pl.UTF-8):	Prosty bootloader
+Summary(pt_BR.UTF-8):	Carregador de boot simples
+Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
 Version:	3.35
 Release:	1
@@ -57,7 +57,7 @@ Intel PXE (Pre-Execution Environment).
 
 %package devel
 Summary:	Header files for syslinux libraries
-Summary(pl.UTF-8):   Pliki nagłówkowe bibliotek syslinux
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek syslinux
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
