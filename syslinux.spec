@@ -3,14 +3,15 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	3.35
+Version:	3.36
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	e6e1436a61bd024844426f5f7a9fd727
+# Source0-md5:	d1bfdaa53d31f572f540be55d1480027
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
+BuildRequires:	glibc-devel(i686)
 BuildRequires:	perl-base
 BuildRequires:	sed >= 4.0
 Requires:	mtools
@@ -79,7 +80,7 @@ sed -i 's/FPNG_NO_WRITE_SUPPORTED/DPNG_NO_WRITE_SUPPORTED/' com32/lib/MCONFIG
 
 %build
 rm -f ldlinux.{bin,bss,lst,sys}
-%{__make} installer \
+%{__make} -j1 installer \
 	CC="%{__cc}"
 
 %install
@@ -87,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
 install ldlinux.sys $RPM_BUILD_ROOT%{_libdir}/%{name}
 
-%{__make} install-all \
+%{__make} -j1 install-all \
 	INSTALLROOT=$RPM_BUILD_ROOT \
 	LIBDIR=%{_libdir}
 
