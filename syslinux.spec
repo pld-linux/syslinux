@@ -4,14 +4,16 @@ Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
 Version:	3.36
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
 # Source0-md5:	d1bfdaa53d31f572f540be55d1480027
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
+%ifarch %{x8664}
 BuildRequires:	glibc-devel(i686)
+%endif
 BuildRequires:	perl-base
 BuildRequires:	sed >= 4.0
 Requires:	mtools
