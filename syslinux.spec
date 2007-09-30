@@ -11,9 +11,6 @@ Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.t
 # Source0-md5:	b7fe950723286e3d55a0650fb26c3b25
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
-%ifarch %{x8664}
-BuildRequires:	/usr/lib/libc.so
-%endif
 BuildRequires:	perl-base
 BuildRequires:	sed >= 4.0
 Requires:	mtools
