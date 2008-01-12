@@ -3,12 +3,12 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	3.54
+Version:	3.60
 Release:	1
 License:	GPL
 Group:		Applications/System
-Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.gz
-# Source0-md5:	34afbb9f3491c73fbceef5c4e21d27c1
+Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
+# Source0-md5:	96e11c6baa87a937b0726b07d687cb7b
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
 BuildRequires:	perl-base
@@ -89,20 +89,20 @@ install ldlinux.sys $RPM_BUILD_ROOT%{_libdir}/%{name}
 
 %{__make} -j1 install-all \
 	INSTALLROOT=$RPM_BUILD_ROOT \
-	LIBDIR=%{_libdir}
-
-install extlinux/extlinux $RPM_BUILD_ROOT%{_bindir}
+	LIBDIR=%{_libdir} \
+	MANDIR=%{_mandir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc NEWS README* *.doc */*.doc
+%doc NEWS README* doc/*.doc com32/modules/mboot.doc
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/???[.a-z]*
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
