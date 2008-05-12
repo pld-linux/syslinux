@@ -9,6 +9,7 @@ License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
 # Source0-md5:	ee6b84cc7b598b4e1a00a4a8c6676d4e
+Patch0:		%{name}-logical-boot.patch
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
 BuildRequires:	perl-base
@@ -74,6 +75,8 @@ jeśli chcemy tworzyć lub kompilować własnych klientów syslinuksa.
 
 %prep
 %setup -q
+%patch0 -p1
+
 sed -i 's/-march=i386//' sample/Makefile
 sed -i 's/FPNG_NO_WRITE_SUPPORTED/DPNG_NO_WRITE_SUPPORTED/' com32/lib/MCONFIG
 
