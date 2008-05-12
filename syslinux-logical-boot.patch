@@ -1,0 +1,27 @@
+From: Sergey Vlasov <vsu@altlinux.ru>
+Date: Thu, 24 Apr 2008 19:33:54 +0000 (+0400)
+Subject: chain.c32: fix booting from logical partitions
+X-Git-Url: http://git.kernel.org/?p=boot%2Fsyslinux%2Fsyslinux.git;a=commitdiff_plain;h=e31a673cc14223db120f363dcd6ecc491125f622;hp=e3d33598815f6aa43b7f2b3aecf6bc2d6b4f408e
+
+chain.c32: fix booting from logical partitions
+
+Booting from a logical partition failed with the "Requested logical
+partition not found" error due to a wrong test for partition signature
+in find_logical_partition().
+
+Signed-off-by: Sergey Vlasov <vsu@altlinux.ru>
+---
+
+diff --git a/com32/modules/chain.c b/com32/modules/chain.c
+index b790bd0..ec92cd0 100644
+--- a/com32/modules/chain.c
++++ b/com32/modules/chain.c
+@@ -228,7 +228,7 @@ find_logical_partition(int whichpart, char *table, struct part_entry *self,
+   struct part_entry *found;
+   int i;
+ 
+-  if ( *(uint16_t *)(ptab + 0x1fe) != 0xaa55 )
++  if ( *(uint16_t *)(table + 0x1fe) != 0xaa55 )
+     return NULL;		/* Signature missing */
+ 
+   /* We are assumed to already having enumerated all the data partitions
