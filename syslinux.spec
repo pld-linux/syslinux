@@ -3,13 +3,12 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	3.63
+Version:	3.70
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	ee6b84cc7b598b4e1a00a4a8c6676d4e
-Patch0:		%{name}-logical-boot.patch
+# Source0-md5:	32e900331339d7d3d4e8cfee8a5ea8c0
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
 BuildRequires:	perl-base
@@ -75,7 +74,6 @@ jeśli chcemy tworzyć lub kompilować własnych klientów syslinuksa.
 
 %prep
 %setup -q
-%patch0 -p1
 
 sed -i 's/-march=i386//' sample/Makefile
 sed -i 's/FPNG_NO_WRITE_SUPPORTED/DPNG_NO_WRITE_SUPPORTED/' com32/lib/MCONFIG
@@ -87,13 +85,15 @@ rm -f ldlinux.{bin,bss,lst,sys}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name},%{_includedir}}
-install ldlinux.sys $RPM_BUILD_ROOT%{_libdir}/%{name}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name},%{_includedir}}
+install core/ldlinux.sys $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %{__make} -j1 install-all \
 	INSTALLROOT=$RPM_BUILD_ROOT \
 	LIBDIR=%{_libdir} \
 	MANDIR=%{_mandir}
+
+rm -fr $RPM_BUILD_ROOT/{boot,tftpboot}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -103,10 +103,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS README* doc/*.txt
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_bindir}/*
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/???[.a-z]*
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/???[.a-z]*
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/%{name}/com32
+%{_datadir}/%{name}/com32
