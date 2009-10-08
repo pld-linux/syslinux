@@ -3,12 +3,12 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	3.82
+Version:	3.83
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	c9f4e73e385c86b3a8faf9b615a04836
+# Source0-md5:	069160bc3776eca71a57cabace22bb24
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
 BuildRequires:	perl-base
@@ -107,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/???[.a-z]*
 %{_mandir}/man1/*
 %{_datadir}/syslinux/mbr_?.bin
+%{_datadir}/syslinux/int18.com
 
 %files devel
 %defattr(644,root,root,755)
