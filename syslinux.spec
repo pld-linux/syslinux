@@ -12,6 +12,7 @@ Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.t
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
 BuildRequires:	perl-base
+BuildRequires:	perl-modules
 BuildRequires:	sed >= 4.0
 Requires:	mtools
 ExclusiveArch:	%{ix86} %{x8664}
