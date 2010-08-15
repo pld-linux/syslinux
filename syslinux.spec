@@ -102,13 +102,36 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc NEWS README* doc/*.txt
-%attr(755,root,root) %{_sbindir}/*
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_sbindir}/extlinux
+%attr(755,root,root) %{_bindir}/gethostip
+%attr(755,root,root) %{_bindir}/isohybrid
+%attr(755,root,root) %{_bindir}/isohybrid.pl
+%attr(755,root,root) %{_bindir}/keytab-lilo
+%attr(755,root,root) %{_bindir}/lss16toppm
+%attr(755,root,root) %{_bindir}/md5pass
+%attr(755,root,root) %{_bindir}/memdiskfind
+%attr(755,root,root) %{_bindir}/mkdiskimage
+%attr(755,root,root) %{_bindir}/ppmtolss16
+%attr(755,root,root) %{_bindir}/pxelinux-options
+%attr(755,root,root) %{_bindir}/sha1pass
+%attr(755,root,root) %{_bindir}/syslinux
+%attr(755,root,root) %{_bindir}/syslinux2ansi
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/???[.a-z]*
-%{_mandir}/man1/*
-%{_datadir}/syslinux/mbr_?.bin
-%{_datadir}/syslinux/int18.com
+%{_datadir}/%{name}/*.bin
+%{_datadir}/%{name}/*.c32
+%{_datadir}/%{name}/*.com
+%{_datadir}/%{name}/dosutil
+%{_datadir}/%{name}/gpxelinux.0
+%{_datadir}/%{name}/ldlinux.sys
+%{_datadir}/%{name}/memdisk
+%{_datadir}/%{name}/pxelinux.0
+%{_datadir}/%{name}/syslinux*.exe
+%{_mandir}/man1/extlinux.1*
+%{_mandir}/man1/gethostip.1*
+%{_mandir}/man1/lss16toppm.1*
+%{_mandir}/man1/ppmtolss16.1*
+%{_mandir}/man1/syslinux.1*
+%{_mandir}/man1/syslinux2ansi.1*
 
 %files devel
 %defattr(644,root,root,755)
