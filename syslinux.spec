@@ -3,12 +3,12 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	4.03
+Version:	4.04
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	a7ca38a0a5786b6efae8fb01a1ae8070
+# Source0-md5:	a3936208767eb7ced65320abe2e33a10
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
 BuildRequires:	perl-base
@@ -94,7 +94,7 @@ install core/ldlinux.sys $RPM_BUILD_ROOT%{_datadir}/%{name}
 	LIBDIR=%{_libdir} \
 	MANDIR=%{_mandir}
 
-rm -fr $RPM_BUILD_ROOT/{boot,tftpboot}
+%{__rm} -r $RPM_BUILD_ROOT/{boot,tftpboot}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
