@@ -3,12 +3,12 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	4.04
+Version:	4.05
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	a3936208767eb7ced65320abe2e33a10
+# Source0-md5:	82299242418385da1274c9479a778cb2
 URL:		http://syslinux.zytor.com/
 BuildRequires:	nasm
 BuildRequires:	perl-base
@@ -77,7 +77,6 @@ jeśli chcemy tworzyć lub kompilować własnych klientów syslinuksa.
 %setup -q
 
 %{__sed} -i 's/-march=i386//' sample/Makefile
-%{__sed} -i 's/FPNG_NO_WRITE_SUPPORTED/DPNG_NO_WRITE_SUPPORTED/' com32/lib/MCONFIG
 
 %build
 rm -f ldlinux.{bin,bss,lst,sys}
@@ -122,10 +121,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/*.com
 %{_datadir}/%{name}/dosutil
 %{_datadir}/%{name}/gpxelinux.0
+%{_datadir}/%{name}/gpxelinuxk.0
 %{_datadir}/%{name}/ldlinux.sys
 %{_datadir}/%{name}/memdisk
 %{_datadir}/%{name}/pxelinux.0
 %{_datadir}/%{name}/syslinux*.exe
+%dir %{_datadir}/%{name}/diag
+%{_datadir}/%{name}/diag/geodsp1s.img*
+%{_datadir}/%{name}/diag/geodspms.img*
+%{_datadir}/%{name}/diag/handoff.bin
 %{_mandir}/man1/extlinux.1*
 %{_mandir}/man1/gethostip.1*
 %{_mandir}/man1/lss16toppm.1*
