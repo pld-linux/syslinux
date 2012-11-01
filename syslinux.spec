@@ -3,17 +3,20 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	4.05
+Version:	4.06
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.bz2
-# Source0-md5:	82299242418385da1274c9479a778cb2
+Source0:	ftp://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
+# Source0-md5:	77d33140860621cd850c3a7ab0ebb7d6
 URL:		http://syslinux.zytor.com/
+BuildRequires:	libuuid-devel
 BuildRequires:	nasm
 BuildRequires:	perl-base
 BuildRequires:	perl-modules
 BuildRequires:	sed >= 4.0
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	mtools
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -79,7 +82,6 @@ jeśli chcemy tworzyć lub kompilować własnych klientów syslinuksa.
 %{__sed} -i 's/-march=i386//' sample/Makefile
 
 %build
-rm -f ldlinux.{bin,bss,lst,sys}
 %{__make} -j1 installer \
 	CC="%{__cc}"
 
