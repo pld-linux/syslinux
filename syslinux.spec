@@ -1,15 +1,28 @@
+#
+# Conditional build:
+%bcond_without	efi32	# EFI32 bootloader (requires x86_32 gnu-efi)
+%bcond_without	efi64	# EFI64 bootloader (requires x86_64 gnu-efi)
+#
+%ifnarch %{ix86}
+# %{x8664} also possible, but requires multilib gnu-efi
+%undefine	with_efi32
+%endif
+%ifnarch %{x8664}
+%undefine	with_efi64
+%endif
 Summary:	Simple bootloader
 Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	5.10
+Version:	6.01
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	http://ftp.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
-# Source0-md5:	67c8a85ca275d13b4f7f6139dd47d999
+Source0:	https://www.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
+# Source0-md5:	5fe8959b92255143a334167ca1c395a6
 URL:		http://syslinux.zytor.com/
+BuildRequires:	gnu-efi
 BuildRequires:	libuuid-devel
 BuildRequires:	nasm
 BuildRequires:	perl-base
@@ -82,20 +95,21 @@ jeśli chcemy tworzyć lub kompilować własnych klientów syslinuksa.
 %{__sed} -i 's/-march=i386//' sample/Makefile
 
 %build
-%{__make} -j1 installer \
+for d in "bios installer" %{?with_efi32:efi32} %{?with_efi64:efi64} ; do
+%{__make} -j1 $d \
 	CC="%{__cc}"
+done
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name},%{_includedir}}
-install core/ldlinux.sys $RPM_BUILD_ROOT%{_datadir}/%{name}
+install bios/core/ldlinux.sys $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-%{__make} -j1 install-all \
+%{__make} -j1 install \
+	firmware="bios %{?with_efi32:efi32} %{?with_efi64:efi64}" \
 	INSTALLROOT=$RPM_BUILD_ROOT \
 	LIBDIR=%{_libdir} \
 	MANDIR=%{_mandir}
-
-%{__rm} -r $RPM_BUILD_ROOT/{boot,tftpboot}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -133,6 +147,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/diag/geodsp1s.img*
 %{_datadir}/%{name}/diag/geodspms.img*
 %{_datadir}/%{name}/diag/handoff.bin
+%if %{with efi32}
+%{_datadir}/%{name}/efi32
+%endif
+%if %{with efi64}
+%{_datadir}/%{name}/efi64
+%endif
 %{_mandir}/man1/extlinux.1*
 %{_mandir}/man1/gethostip.1*
 %{_mandir}/man1/lss16toppm.1*
