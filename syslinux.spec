@@ -15,12 +15,12 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	6.01
+Version:	6.02
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://www.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
-# Source0-md5:	5fe8959b92255143a334167ca1c395a6
+# Source0-md5:	6f275813a1b08cf852e55c0a3f8fbc78
 URL:		http://syslinux.zytor.com/
 BuildRequires:	gnu-efi
 BuildRequires:	libuuid-devel
