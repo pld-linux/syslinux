@@ -22,7 +22,7 @@ Group:		Applications/System
 Source0:	https://www.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
 # Source0-md5:	6f275813a1b08cf852e55c0a3f8fbc78
 URL:		http://syslinux.zytor.com/
-BuildRequires:	gnu-efi
+BuildRequires:	gnu-efi >= 3.0u
 BuildRequires:	libuuid-devel
 BuildRequires:	nasm
 BuildRequires:	perl-base
