@@ -15,12 +15,15 @@ Summary(pl.UTF-8):	Prosty bootloader
 Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
-Version:	6.03
+Version:	6.04
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	https://www.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
-# Source0-md5:	92a253df9211e9c20172796ecf388f13
+# Source0:	https://www.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
+Source0:	https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.xz
+# Source0-md5:	f9c956fde0de29be297402ecbc8ff4d0
+Patch0:		0002-ext4-64bit-feature.patch
+Patch1:		0003-include-sysmacros-h.patch
 URL:		http://syslinux.zytor.com/
 BuildRequires:	gnu-efi >= 3.0u
 BuildRequires:	libuuid-devel
@@ -90,7 +93,9 @@ aplikacji wykorzystujących kod syslinuksa. Należy go instalować tylko
 jeśli chcemy tworzyć lub kompilować własnych klientów syslinuksa.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-pre1
+%patch0 -p1
+%patch1 -p1
 
 %{__sed} -i 's/-march=i386//' sample/Makefile
 
@@ -136,8 +141,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/*.c32
 %{_datadir}/%{name}/*.com
 %{_datadir}/%{name}/dosutil
-%{_datadir}/%{name}/gpxelinux.0
-%{_datadir}/%{name}/gpxelinuxk.0
 %{_datadir}/%{name}/ldlinux.sys
 %{_datadir}/%{name}/lpxelinux.0
 %{_datadir}/%{name}/memdisk
