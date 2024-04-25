@@ -9,11 +9,10 @@ present.
  efi/Makefile | 11 ++++++++++-
  1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/efi/Makefile b/efi/Makefile
-index f4501e7..adae73f 100644
---- a/efi/Makefile
-+++ b/efi/Makefile
-@@ -43,8 +43,10 @@ CORE_OBJS += $(addprefix $(OBJ)/../core/, \
+diff -urNp -x '*.orig' syslinux-6.04-pre1.org/efi/Makefile syslinux-6.04-pre1/efi/Makefile
+--- syslinux-6.04-pre1.org/efi/Makefile	2016-03-02 06:06:02.000000000 +0100
++++ syslinux-6.04-pre1/efi/Makefile	2024-04-25 20:04:18.449147821 +0200
+@@ -41,8 +41,10 @@ CORE_OBJS += $(addprefix $(OBJ)/../core/
  	fs/pxe/pxe.o fs/pxe/tftp.o fs/pxe/urlparse.o fs/pxe/dhcp_option.o \
  	fs/pxe/ftp.o fs/pxe/ftp_readdir.o fs/pxe/http.o fs/pxe/http_readdir.o)
  
@@ -23,9 +22,9 @@ index f4501e7..adae73f 100644
 -	$(LIBEFI)
 +	$(LIBEFI_STRIPPED)
  
- CSRC = $(sort $(wildcard $(SRC)/*.c))
+ CSRC = $(wildcard $(SRC)/*.c)
  OBJS = $(subst $(SRC)/,,$(filter-out %wrapper.o, $(patsubst %.c,%.o,$(CSRC))))
-@@ -73,6 +75,13 @@ BTARGET  = syslinux.efi
+@@ -71,6 +73,13 @@ BTARGET  = syslinux.efi
  syslinux.so: $(OBJS) $(CORE_OBJS) $(LIB_OBJS)
  	$(LD) $(LDFLAGS) --strip-debug -o $@ $^ -lgnuefi -lefi
  

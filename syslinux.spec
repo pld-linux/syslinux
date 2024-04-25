@@ -16,7 +16,7 @@ Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
 Version:	6.04
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/System
 # Source0:	https://www.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
@@ -30,6 +30,7 @@ Patch10:	0005-gnu-efi-version-compatibility.patch
 Patch11:	0016-strip-gnu-property.patch
 Patch12:	0017-single-load-segment.patch
 Patch13:	0018-prevent-pow-optimization.patch
+Patch14:	0019-gcc-10-compatibility.patch
 URL:		http://syslinux.zytor.com/
 BuildRequires:	gnu-efi >= 3.0u
 BuildRequires:	libuuid-devel
@@ -107,6 +108,7 @@ jeśli chcemy tworzyć lub kompilować własnych klientów syslinuksa.
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %{__sed} -i 's/-march=i386//' sample/Makefile
 
