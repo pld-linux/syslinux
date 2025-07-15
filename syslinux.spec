@@ -102,15 +102,15 @@ jeśli chcemy tworzyć lub kompilować własnych klientów syslinuksa.
 
 %prep
 %setup -q -n %{name}-%{version}-pre1
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%patch -P10 -p1
+%patch -P11 -p1
+%patch -P12 -p1
+%patch -P13 -p1
+%patch -P14 -p1
+%patch -P15 -p1
 
 %{__sed} -i 's/-march=i386//' sample/Makefile
 
