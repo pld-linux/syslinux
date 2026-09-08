@@ -4,7 +4,7 @@
 %bcond_without	efi64	# EFI64 bootloader (requires x86_64 gnu-efi)
 #
 %ifnarch %{ix86}
-# %{x8664} also possible, but requires multilib gnu-efi
+# %%{x8664} also possible, but requires multilib gnu-efi
 %undefine	with_efi32
 %endif
 %ifnarch %{x8664}
@@ -16,10 +16,10 @@ Summary(pt_BR.UTF-8):	Carregador de boot simples
 Summary(zh_CN.UTF-8):	Linux操作系统的启动管理器
 Name:		syslinux
 Version:	6.04
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		Applications/System
-# Source0:	https://www.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{version}.tar.xz
+# Source0:	https://www.kernel.org/pub/linux/utils/boot/syslinux/%%{name}-%%{version}.tar.xz
 Source0:	https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.xz
 # Source0-md5:	f9c956fde0de29be297402ecbc8ff4d0
 # FC:
@@ -87,7 +87,7 @@ Intel PXE (Pre-Execution Environment).
 Summary:	Header files for syslinux libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek syslinux
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 This package includes the header files needed for compilation of
